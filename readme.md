@@ -6,16 +6,16 @@ I was not able to figure out a solution at the moment. I felt very bad about tha
 
 # Solution
 
-- An IP address (xxx.xxx.xxx.xxx) can be represented by a positive integer(long) value. the value range is (0, 0xffffffffL)
+ An IP address (xxx.xxx.xxx.xxx) can be represented by a positive integer(long) value. the value range is (0, 0xffffffffL)
 
-- We can define an array of long with the size 0xffffffffL, then use the element index to represent the IP, 
+ We can define an array of long with the size 0xffffffffL, then use the element index to represent the IP, 
 use the element value to represent the visit time of the corresponding IP.
 
-- To define such an array, we need a memory space of 2^32 * 8 bytes, which is 32 GB.
+ To define such an array, we need a memory space of 2^32 * 8 bytes, which is 32 GB.
 
-- We can not make use of such big memory. But we can split things up to small scales and make use of this idea.
+ We can not make use of such big memory. But we can split things up to small scales and make use of this idea.
 
-- For example, we can segment the original IP file to 256 small IP files:
+ For example, we can segment the original IP file to 256 small IP files:
 
 	file0:		0.xxx.xxx.xxx
 	file1:		1.xxx.xxx.xxx
@@ -23,11 +23,11 @@ use the element value to represent the visit time of the corresponding IP.
 	... 
 	file255:		255.xxx.xxx.xxx
 
-- Then we can find the most popular IPs in each segment, and then nail down the most popular IP in all 256 segments.
+ Then we can find the most popular IPs in each segment, and then nail down the most popular IP in all 256 segments.
 
-- To find the most popular IP in one segment by using the idea, we can define an array of long with size 0xffffffL, which requires 2^24 * 8 bytes (128 MB) memory usage. That is totally acceptable.
+ To find the most popular IP in one segment by using the idea, we can define an array of long with size 0xffffffL, which requires 2^24 * 8 bytes (128 MB) memory usage. That is totally acceptable.
 
-- Having the solution worked out, the rest is coding.
+ Having the solution worked out, the rest is coding. It's easy to change the code and find the top 10 most popular IPs.
 
 # Result
 I tested the code with different size of data. Sadly I don't have disk space to store TB of data.
